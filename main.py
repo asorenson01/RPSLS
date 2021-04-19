@@ -3,4 +3,6 @@ from game import Game
 if __name__ == '__main__':
     pass
 
-I need to re save this folder
+first_game = Game()
+
+first_game.play_the_game()
