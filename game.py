@@ -14,6 +14,7 @@ class Game:
         self.select_players()
         self.welcome_message()
         self.game_table()
+        self.game_winner()
 
     def select_players(self):
         x = Validation.input_number(self, "Press 1 for 1 Player game.  Press 2 for a 2 player game")
@@ -129,25 +130,9 @@ class Game:
                 self.play_two.score += 1
                 print(f"{self.play_two.name}'s {self.play_one.gestures[y]} POISONS {self.play_one.name}'s {self.play_two.gestures[x]}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def game_winner(self):
-        
+        if self.play_one.score > self.play_two.score:
+            print(f"{self.play_one.name} won with a score of {self.play_one.score} to {self.play_two.name}'s score of {self.play_two.score}")
+        else:
+            print(f"{self.play_two.name} won with a score of {self.play_two.score} to {self.play_one.name}'s score of {self.play_one.score}")
     pass
