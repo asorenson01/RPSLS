@@ -8,16 +8,15 @@ class Game:
     def __init__(self):
         self.play_one = " "
         self.play_two = " "
-        self.counter = 0
+        self.counter = 1
 
     def play_the_game(self):
         self.select_players()
         self.welcome_message()
-        self.play_one.turn()
-        self.play_two.turn()
+        self.game_table()
 
     def select_players(self):
-        x = Validation.input_number(self,"Press 1 for 1 Player game.  Press 2 for a 2 player game")
+        x = Validation.input_number(self, "Press 1 for 1 Player game.  Press 2 for a 2 player game")
         if x == 1 or x == 2:
             if x == 1:
                 self.play_one = Human()
@@ -35,13 +34,91 @@ class Game:
         pass
 
     def game_table(self):
-        pass
+        while self.counter < 4:
+            print(f"Round {self.counter} current score is {self.play_one.name} has {self.play_one.score} points. While {self.play_two.name} has {self.play_two.score} points.")
+            print("HERE WE GO!")
+            x = self.play_one.turn()
+            y = self.play_two.turn()
+            self.game_mech(x, y)
 
-    def game_mech(self):
-        # while self.counter < 3:
-        #     x = self.play_one.turn()
-        #     y = self.play_two.turn()
-        pass
 
-    def game_winner(self):
-        pass
+    def game_mech(self, x, y):
+
+        if x == y:
+            print(f"You both Selected {self.play_one.gestures[x]} lets try again")
+            self.game_table()
+        elif x == 0:
+            if y == 2 or y == 3:
+                self.counter +=1
+                self.play_one.score +=1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} CRUSHES {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 1:
+                self.counter +=1
+                self.play_two.score +=1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} COVERS {self.play_one.name}'s {self.play_two.gestures[x]}")
+            elif y ==4:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} VAPORIZES {self.play_one.name}'s {self.play_two.gestures[x]}")
+        elif x == 1:
+            if y == 0:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} COVERS {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 4:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} DISPROVES {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 2:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} CUT {self.play_one.name}'s {self.play_two.gestures[x]}")
+            elif y == 3:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} EATS {self.play_one.name}'s {self.play_two.gestures[x]}")
+        elif x == 2:
+            if y == 1:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} CUTS {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 3:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} DECAPITATES {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 0:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} CRUSHES {self.play_one.name}'s {self.play_two.gestures[x]}")
+            elif == 4:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} SMASHES {self.play_one.name}'s {self.play_two.gestures[x]}")
+        elif x == 3:
+            if y == 1:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} EATS {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 4:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} POISONS {self.play_two.name}'s {self.play_two.gestures[y]}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def game_winner(self):
+    pass
