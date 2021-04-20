@@ -1,3 +1,5 @@
+import time
+
 from player import Player
 from validation import Validation
 
@@ -20,6 +22,7 @@ class Human(Player):
             self.turn()
         else:
             print(f"You have selected {self.gestures[human_choice]}")
+            time.sleep(.250)
             return human_choice
 
 

@@ -1,3 +1,6 @@
+import os
+import time
+
 import human
 from human import Human
 from computer import Computer
@@ -31,6 +34,7 @@ class Game:
 
     def welcome_message(self):
         print(f"Welcome to this match of Rock, Paper, Scissors, Lizard, Spock ")
+        time.sleep(.500)
         print(f"Today's match up will be {self.play_one.name} versus {self.play_two.name}")
         pass
 
@@ -38,6 +42,7 @@ class Game:
         while self.counter < 4:
             print(f"Round {self.counter} current score is {self.play_one.name} has {self.play_one.score} points. While {self.play_two.name} has {self.play_two.score} points.")
             print("HERE WE GO!")
+            time.sleep(1)
             x = self.play_one.turn()
             y = self.play_two.turn()
             self.game_mech(x, y)
@@ -96,11 +101,15 @@ class Game:
         self.counter += 1
         self.play_one.score += 1
         print(f"{self.play_one.name}'s {self.play_one.gestures[x]} {word} {self.play_two.name}'s {self.play_two.gestures[y]}")
+        time.sleep(.500)
+
 
     def p2_win(self, x, word, y):
         self.counter += 1
         self.play_two.score += 1
         print(f"{self.play_two.name}'s {self.play_one.gestures[y]} {word} {self.play_one.name}'s {self.play_two.gestures[x]}")
+        time.sleep(.500)
+        
 
     def game_winner(self):
         if self.play_one.score > self.play_two.score:
