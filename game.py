@@ -90,7 +90,7 @@ class Game:
                 self.counter += 1
                 self.play_two.score += 1
                 print(f"{self.play_two.name}'s {self.play_one.gestures[y]} CRUSHES {self.play_one.name}'s {self.play_two.gestures[x]}")
-            elif == 4:
+            elif y == 4:
                 self.counter += 1
                 self.play_two.score += 1
                 print(f"{self.play_two.name}'s {self.play_one.gestures[y]} SMASHES {self.play_one.name}'s {self.play_two.gestures[x]}")
@@ -103,6 +103,31 @@ class Game:
                 self.counter += 1
                 self.play_one.score += 1
                 print(f"{self.play_one.name}'s {self.play_one.gestures[x]} POISONS {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 0:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} CRUSHES {self.play_one.name}'s {self.play_two.gestures[x]}")
+            elif y == 2:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} DECAPITATES {self.play_one.name}'s {self.play_two.gestures[x]}")
+        elif x ==4:
+            if y == 0:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} VAPORIZES {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 2:
+                self.counter += 1
+                self.play_one.score += 1
+                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} SMASHES {self.play_two.name}'s {self.play_two.gestures[y]}")
+            elif y == 1:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} DISPROVES {self.play_one.name}'s {self.play_two.gestures[x]}")
+            elif y == 3:
+                self.counter += 1
+                self.play_two.score += 1
+                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} POISONS {self.play_one.name}'s {self.play_two.gestures[x]}")
 
 
 
@@ -120,5 +145,9 @@ class Game:
 
 
 
-def game_winner(self):
+
+
+
+    def game_winner(self):
+        
     pass
