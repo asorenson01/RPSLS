@@ -13,6 +13,8 @@ class Game:
     def play_the_game(self):
         self.select_players()
         self.welcome_message()
+        self.play_one.turn()
+        self.play_two.turn()
 
     def select_players(self):
         x = Validation.input_number(self,"Press 1 for 1 Player game.  Press 2 for a 2 player game")
@@ -36,6 +38,9 @@ class Game:
         pass
 
     def game_mech(self):
+        # while self.counter < 3:
+        #     x = self.play_one.turn()
+        #     y = self.play_two.turn()
         pass
 
     def game_winner(self):
