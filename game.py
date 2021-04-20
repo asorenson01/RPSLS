@@ -50,17 +50,11 @@ class Game:
             self.game_table()
         elif x == 0:
             if y == 2 or y == 3:
-                self.counter +=1
-                self.play_one.score +=1
-                print(f"{self.play_one.name}'s {self.play_one.gestures[x]} CRUSHES {self.play_two.name}'s {self.play_two.gestures[y]}")
+                self.p1_win(x, "CRUSHES", y)
             elif y == 1:
-                self.counter +=1
-                self.play_two.score +=1
-                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} COVERS {self.play_one.name}'s {self.play_two.gestures[x]}")
-            elif y ==4:
-                self.counter += 1
-                self.play_two.score += 1
-                print(f"{self.play_two.name}'s {self.play_one.gestures[y]} VAPORIZES {self.play_one.name}'s {self.play_two.gestures[x]}")
+                self.p2_win(x, "COVERS", y)
+            elif y == 4:
+                self.p2_win(x, "VAPORIZES", y)
         elif x == 1:
             if y == 0:
                 self.counter += 1
@@ -130,9 +124,20 @@ class Game:
                 self.play_two.score += 1
                 print(f"{self.play_two.name}'s {self.play_one.gestures[y]} POISONS {self.play_one.name}'s {self.play_two.gestures[x]}")
 
+    def p1_win(self, x, word, y):
+        self.counter += 1
+        self.play_one.score += 1
+        print(f"{self.play_one.name}'s {self.play_one.gestures[x]} {word} {self.play_two.name}'s {self.play_two.gestures[y]}")
+
+    def p2_win(self, x, word, y):
+        self.counter += 1
+        self.play_two.score += 1
+        print(f"{self.play_two.name}'s {self.play_one.gestures[y]} {word} {self.play_one.name}'s {self.play_two.gestures[x]}")
+
     def game_winner(self):
         if self.play_one.score > self.play_two.score:
             print(f"{self.play_one.name} won with a score of {self.play_one.score} to {self.play_two.name}'s score of {self.play_two.score}")
         else:
             print(f"{self.play_two.name} won with a score of {self.play_two.score} to {self.play_one.name}'s score of {self.play_one.score}")
+
 
