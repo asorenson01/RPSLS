@@ -40,13 +40,13 @@ class Game:
 
     def game_table(self):
         while self.counter < 4:
-            print(f"Round {self.counter} current score is {self.play_one.name} has {self.play_one.score} points. While {self.play_two.name} has {self.play_two.score} points.")
+            print(
+                f"Round {self.counter} current score is {self.play_one.name} has {self.play_one.score} points. While {self.play_two.name} has {self.play_two.score} points.")
             print("HERE WE GO!")
             time.sleep(1)
             x = self.play_one.turn()
             y = self.play_two.turn()
             self.game_mech(x, y)
-
 
     def game_mech(self, x, y):
 
@@ -55,66 +55,99 @@ class Game:
             self.game_table()
         elif x == 0:
             if y == 2 or y == 3:
-                self.p1_win(x, "CRUSHES", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "CRUSHES", y, self.play_one, self.play_two)
+                # self.p1_win(x, "CRUSHES", y)
             elif y == 1:
-                self.p2_win(x, "COVERS", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "COVERS", y, self.play_two, self.play_one)
+                # self.p2_win(x, "COVERS", y)
             elif y == 4:
-                self.p2_win(x, "VAPORIZES", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "VAPORIZES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "VAPORIZES", y)
         elif x == 1:
             if y == 0:
-                self.p1_win(x, "COVERS", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "COVERS", y, self.play_one, self.play_two)
+                # self.p1_win(x, "COVERS", y)
             elif y == 4:
-                self.p1_win(x, "DISPROVES", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "DISPROVES", y, self.play_one, self.play_two)
+                # self.p1_win(x, "DISPROVES", y)
             elif y == 2:
-                self.p2_win(x, "CUT", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "CUT", y, self.play_two, self.play_one)
+                # self.p2_win(x, "CUT", y)
             elif y == 3:
-                self.p2_win(x, "EATS", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "EATS", y, self.play_two, self.play_one)
+                # self.p2_win(x, "EATS", y)
         elif x == 2:
             if y == 1:
-                self.p1_win(x, "CUTS", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "CUTS", y, self.play_one, self.play_two)
+                # self.p1_win(x, "CUTS", y)
             elif y == 3:
-                self.p1_win(x, "DECAPITATES", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "DECAPITATES", y, self.play_one, self.play_two)
+                # self.p1_win(x, "DECAPITATES", y)
             elif y == 0:
-                self.p2_win(x, "CRUSHES", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "CRUSHES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "CRUSHES", y)
             elif y == 4:
-                self.p2_win(x, "SMASHES", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "SMASHES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "SMASHES", y)
         elif x == 3:
             if y == 1:
-                self.p1_win(x, "EATS", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "EATS", y, self.play_one, self.play_two)
+                # self.p1_win(x, "EATS", y)
             elif y == 4:
-                self.p1_win(x, "POISONS", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "POISONS", y, self.play_one, self.play_two)
+                # self.p1_win(x, "POISONS", y)
             elif y == 0:
-                self.p2_win(x,"CRUSHES", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "CRUSHES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "CRUSHES", y)
             elif y == 2:
-                self.p2_win(x, "DECAPITATES", y)
-        elif x ==4:
+                self.counter += 1
+                self.play_two.round_winner(x, "DECAPITATES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "DECAPITATES", y)
+        elif x == 4:
             if y == 0:
-                self.p1_win(x, "VAPORIZES", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "VAPORIZES", y, self.play_one, self.play_two)
+                # self.p1_win(x, "VAPORIZES", y)
             elif y == 2:
-                self.p1_win(x, "SMASHES", y)
+                self.counter += 1
+                self.play_one.round_winner(x, "SMASHES", y, self.play_one, self.play_two)
+                # self.p1_win(x, "SMASHES", y)
             elif y == 1:
-                self.p2_win(x, "DISPROVES", y)
+                self.counter += 1
+                self.play_two.round_winner(x, "DISPROVES", y, self.play_two, self.play_one)
+                # self.p2_win(x, "DISPROVES", y)
             elif y == 3:
-                self.p2_win(x, "POISONS", y)
-
-    def p1_win(self, x, word, y):
-        self.counter += 1
-        self.play_one.score += 1
-        print(f"{self.play_one.name}'s {self.play_one.gestures[x]} {word} {self.play_two.name}'s {self.play_two.gestures[y]}")
-        time.sleep(.500)
+                self.counter += 1
+                self.play_two.round_winner(x, "POISONS", y, self.play_two, self.play_one)
+                # self.p2_win(x, "POISONS", y)
 
 
-    def p2_win(self, x, word, y):
-        self.counter += 1
-        self.play_two.score += 1
-        print(f"{self.play_two.name}'s {self.play_one.gestures[y]} {word} {self.play_one.name}'s {self.play_two.gestures[x]}")
-        time.sleep(.500)
-        
+
+    # def p2_win(self, x, word, y):
+    #     self.counter += 1
+    #     self.play_two.score += 1
+    #     print(
+    #         f"{self.play_two.name}'s {self.play_one.gestures[y]} {word} {self.play_one.name}'s {self.play_two.gestures[x]}")
+    #     time.sleep(.500)
 
     def game_winner(self):
         if self.play_one.score > self.play_two.score:
-            print(f"{self.play_one.name} won with a score of {self.play_one.score} to {self.play_two.name}'s score of {self.play_two.score}")
+            print(
+                f"{self.play_one.name} won with a score of {self.play_one.score} to {self.play_two.name}'s score of {self.play_two.score}")
         else:
-            print(f"{self.play_two.name} won with a score of {self.play_two.score} to {self.play_one.name}'s score of {self.play_one.score}")
-
-
+            print(
+                f"{self.play_two.name} won with a score of {self.play_two.score} to {self.play_one.name}'s score of {self.play_one.score}")
