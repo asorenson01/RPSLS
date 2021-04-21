@@ -39,7 +39,7 @@ class Game:
         pass
 
     def game_table(self):
-        while self.counter < 4:
+        while self.counter < 4 and self.play_one.score < 2 and self.play_two.score < 2:
             print(
                 f"Round {self.counter} current score is {self.play_one.name} has {self.play_one.score} points. While {self.play_two.name} has {self.play_two.score} points.")
             print("HERE WE GO!")
